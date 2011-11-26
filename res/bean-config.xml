@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+  "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  <bean id="com.googlepages.switch486.MAS.IO.Parser"
+        class="com.googlepages.switch486.MAS.IO.Parser">
+     <property name="engine" ref="com.googlepages.switch486.MAS.Engine.IEngine"/>
+  </bean>
+  <bean id="com.googlepages.switch486.MAS.Engine.IEngine"
+        class="com.googlepages.switch486.MAS.Engine.EngineFacade">
+  </bean>
+</beans>
