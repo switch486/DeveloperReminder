@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-public class SVNSpider {
+public class SVNSpider implements IVersioningSpider {
 
 	// read svn log and get revisions later than in the properties
 	// for each revision do>

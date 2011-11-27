@@ -1,5 +1,5 @@
 package com.apuchals.DR.common;
 
-public class PropertiesParser {
+public class PropertiesParser implements IParser {
 
 }

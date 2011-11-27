@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="com.apuchals.DR.common.PropertiesParser" class="com.apuchals.DR.common.PropertiesParser" />
+	<bean id="com.apuchals.DR.infoGetter.SVNSpider" class="com.apuchals.DR.infoGetter.SVNSpider" />
+	<bean id="com.apuchals.DR.review.ReviewStarter" class="com.apuchals.DR.review.ReviewStarter" />
+	<bean id="com.apuchals.DR.notify.NotificationSender" class="com.apuchals.DR.notify.NotificationSender" />
+	<bean id="com.apuchals.DR.DeveloperReminderStarter" class="com.apuchals.DR.DeveloperReminderStarter" />
+</beans>
