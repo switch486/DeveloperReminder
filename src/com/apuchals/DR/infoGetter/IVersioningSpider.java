@@ -8,4 +8,7 @@ public interface IVersioningSpider {
 	
 	public Map<CommitInformation, List<File>> getNewestRevisions ();
 
+	// TODO 28.11.2011 apuchals > remove!
+	public void dumy();
+	
 }

@@ -43,6 +43,7 @@ public class DeveloperReminderStarter {
 			String review = reviewer.computeReview(entry.getValue());
 			notifier.notifyAuthor(entry.getKey(), review);
 		}
+		spider.dumy();
 	}
 	
 }

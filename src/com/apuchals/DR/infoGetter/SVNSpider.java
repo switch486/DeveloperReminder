@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SVNSpider implements IVersioningSpider {
+import com.apuchals.DR.common.UseCase;
+
+public class SVNSpider extends UseCase implements IVersioningSpider {
 
 	// read svn log and get revisions later than in the properties
 	// for each revision do>
@@ -17,6 +19,11 @@ public class SVNSpider implements IVersioningSpider {
 		// TODO 28.11.2011 apuchals > 
 		
 		return new HashMap<CommitInformation, List<File>>();
+	}
+
+	@Override
+	public void dumy() {
+		System.out.println(parser.parse());
 	}
 	
 	
