@@ -1,6 +1,7 @@
 package com.apuchals.DR.infoGetter;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,9 @@ public class SVNSpider implements IVersioningSpider {
 	
 	public Map<CommitInformation, List<File>> getNewestRevisions () {
 		
+		// TODO 28.11.2011 apuchals > 
 		
-		return null;
+		return new HashMap<CommitInformation, List<File>>();
 	}
 	
 	
