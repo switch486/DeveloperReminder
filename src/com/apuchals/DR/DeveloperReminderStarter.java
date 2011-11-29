@@ -31,7 +31,6 @@ public class DeveloperReminderStarter {
 	
 	public void start() {
 		// TODO 26.11.2011 apuchals > adapt the loggers!
-		// TODO 28.11.2011 apuchals > add parsers to the rest
 
 		// start the SVNSpider
 		// start the Review Starter in a loop with the NotificaitonSender
@@ -43,7 +42,6 @@ public class DeveloperReminderStarter {
 			String review = reviewer.computeReview(entry.getValue());
 			notifier.notifyAuthor(entry.getKey(), review);
 		}
-		spider.dumy();
 	}
 	
 }
