@@ -1,7 +1,5 @@
 package com.apuchals.DR.infoGetter;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +31,7 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 		// get all files with the absolute paths 
 	// export to map of <revision, List<javaFiles>> 
 	
-	public Map<CommitInformation, List<File>> getNewestRevisions () {
+	public Map<CommitInformation, CheckedFileList> getNewestRevisions () {
 		computeKeywords();
 		return parseOutput (svnlogCommand.execute(mKeywords));
 	}
@@ -43,28 +41,30 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 		mKeywords.addKeywords(parser.parse(tr(SVN_STATE)));
 	}
 
-	private Map<CommitInformation, List<File>> parseOutput(List<String> execute) {
+	private Map<CommitInformation, CheckedFileList> parseOutput(List<String> execute) {
 		String oneString = toOneString(execute);
 		LogMessageTransformer messageTransformer = new LogMessageTransformer();
 		Log l = (Log) messageTransformer.getObject(oneString);
 		
-		Map<CommitInformation, List<File>> result = new HashMap<CommitInformation, List<File>>();
+		Map<CommitInformation, CheckedFileList> result = new HashMap<CommitInformation, CheckedFileList>();
 		for (LogEntry le : l.getLogEntry()) {
 			result.put(new CommitInformation(le), getFileList(le));
 		}
 		return result;
 	}
 
-	private List<File> getFileList(LogEntry le) {
-		List<File> resultList = new ArrayList<File>();
+	private CheckedFileList getFileList(LogEntry le) {
+		CheckedFileList resultList = new CheckedFileList();
 		String StringReplace = (String) mKeywords
 				.get(Keywords.SVN_FOLER_TO_REPLACE);
 		String exec = (String) mKeywords.get(Keywords.PATH_KEYWORD);
-		// TODO 01.12.2011 apuchals > additional info to get here!
 		for (Path p : le.getPaths().getPath()) {
-			resultList.add(new File(p.getValue().replace(StringReplace, exec)));
+			CheckedFile cf = new CheckedFile();
+			cf.setLocation(p.getValue().replace(StringReplace, exec));
+			cf.setKind(p.getKind());
+			cf.setAction(p.getAction());
+			resultList.add(cf);
 		}
-		// TODO Auto-generated method stub
 		return resultList;
 	}
 

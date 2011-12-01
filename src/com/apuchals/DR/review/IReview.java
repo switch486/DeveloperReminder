@@ -1,10 +1,10 @@
 package com.apuchals.DR.review;
 
-import java.io.File;
-import java.util.List;
+import com.apuchals.DR.infoGetter.CheckedFileList;
+
 
 public interface IReview {
 
-	public String computeReview(List<File> value);
+	public String computeReview(CheckedFileList list);
 	
 }

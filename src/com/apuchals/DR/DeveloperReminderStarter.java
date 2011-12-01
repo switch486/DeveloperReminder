@@ -1,9 +1,8 @@
 package com.apuchals.DR;
 
-import java.io.File;
-import java.util.List;
 import java.util.Map;
 
+import com.apuchals.DR.infoGetter.CheckedFileList;
 import com.apuchals.DR.infoGetter.CommitInformation;
 import com.apuchals.DR.infoGetter.IVersioningSpider;
 import com.apuchals.DR.notify.INotification;
@@ -36,11 +35,12 @@ public class DeveloperReminderStarter {
 		// start the Review Starter in a loop with the NotificaitonSender
 			// for each revision compute results, build an email and send
 		
-		Map<CommitInformation, List<File>> newestRevisions = spider.getNewestRevisions();
+		Map<CommitInformation, CheckedFileList> newestRevisions = spider.getNewestRevisions();
 		
-		for (Map.Entry<CommitInformation, List<File>> entry : newestRevisions.entrySet()) {
+		for (Map.Entry<CommitInformation, CheckedFileList> entry : newestRevisions.entrySet()) {
 			String review = reviewer.computeReview(entry.getValue());
-			notifier.notifyAuthor(entry.getKey(), review);
+			// TODO 01.12.2011 apuchals > commented code here
+//			notifier.notifyAuthor(entry.getKey(), review);
 		}
 	}
 	

@@ -45,5 +45,21 @@ public class Path {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	public String getCopyFromPath() {
+		return copyFromPath;
+	}
+
+	public void setCopyFromPath(String copyFromPath) {
+		this.copyFromPath = copyFromPath;
+	}
+
+	public String getCopyFromRev() {
+		return copyFromRev;
+	}
+
+	public void setCopyFromRev(String copyFromRev) {
+		this.copyFromRev = copyFromRev;
+	}
 	
 }
