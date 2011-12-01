@@ -1,0 +1,10 @@
+This code (written completely by me* - switch486) is a 'hobby task'.
+
+The aim of this application is to run some static code analysis tools (checkstyle, findbugs) on each newest svn revisions and send email notifications if there are some potentialy dangerous code parts or style is misused...
+
+Hope it improves the quality of Your code
+Greetings Switch486
+http://hardwareblacksmith.blogspot.com/
+
+I release this code under the CC BY-SA licence. See wikipedia for details : http://en.wikipedia.org/wiki/Creative_Commons
+*This code uses some external libraries (in the jar directory). These are released under the licence provided by the authors of these. They are NOT the authors own work.
