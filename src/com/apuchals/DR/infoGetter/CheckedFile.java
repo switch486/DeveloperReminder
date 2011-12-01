@@ -3,13 +3,13 @@ package com.apuchals.DR.infoGetter;
 import java.io.File;
 
 public class CheckedFile implements IFileExtension {
-	
-	private File location; 
-	
+
+	private File location;
+
 	private String action;
-	
+
 	private String kind;
-	
+
 	private String fileExtension;
 
 	public String getAction() {
@@ -44,15 +44,16 @@ public class CheckedFile implements IFileExtension {
 			return "";
 		}
 	}
-	
-	public String getFileExtension () {
+
+	public String getFileExtension() {
 		return fileExtension;
 	}
-	
+
 	@Override
 	public String toString() {
 		String sep = " | ";
-		return getClass().getName() + sep + action + sep + kind + sep + fileExtension + sep + location.getPath();
+		return getClass().getName() + sep + action + sep + kind + sep
+				+ fileExtension + sep + location.getPath();
 	}
 
 }

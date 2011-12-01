@@ -7,27 +7,26 @@ import java.util.NoSuchElementException;
 
 import com.apuchals.DR.toRemove.NotImplementedException;
 
+public class CheckedFileList {
 
-public class CheckedFileList   {
-	
 	protected int size;
 
 	private ArrayList<CheckedFile> innerList;
-	
+
 	public CheckedFileList() {
 		innerList = new ArrayList<CheckedFile>();
 	}
-	
+
 	public Iterator<CheckedFile> iterator() {
 		return iterator(null);
 	}
-	
-	public Iterator<CheckedFile> iterator(String [] extensions) {
-		if (extensions== null)
+
+	public Iterator<CheckedFile> iterator(String[] extensions) {
+		if (extensions == null)
 			return innerList.iterator();
 		Iterator<CheckedFile> i = new HiddenIterator(extensions);
 		return i;
-		// TODO 01.12.2011 apuchals > 
+		// TODO 01.12.2011 apuchals >
 	}
 
 	public boolean add(CheckedFile cf) {
@@ -35,20 +34,20 @@ public class CheckedFileList   {
 		size = innerList.size();
 		return add;
 	}
-	
-	private CheckedFile get (int i) {
+
+	private CheckedFile get(int i) {
 		return innerList.get(i);
 	}
-	
+
 	private class HiddenIterator implements Iterator<CheckedFile> {
-		
+
 		int last;
-		
+
 		int currentListSize;
-		
+
 		private String[] extensions;
 
-		public HiddenIterator(String [] extensions) {
+		public HiddenIterator(String[] extensions) {
 			this.extensions = extensions;
 			last = -1;
 			currentListSize = size;
@@ -56,9 +55,9 @@ public class CheckedFileList   {
 
 		@Override
 		public boolean hasNext() {
-			return nextIndex()!=-1;
+			return nextIndex() != -1;
 		}
-		
+
 		private int nextIndex() {
 			if (currentListSize == 0) {
 				return -1;
@@ -88,10 +87,13 @@ public class CheckedFileList   {
 			return false;
 		}
 
-		/* (non-Javadoc)
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see java.util.Iterator#next()
 		 * 
-		 * almost identical operations as the original, but the filetypes are checked too here...
+		 * almost identical operations as the original, but the filetypes are
+		 * checked too here...
 		 */
 		@Override
 		public CheckedFile next() {
@@ -117,8 +119,7 @@ public class CheckedFileList   {
 			// TODO 01.12.2011 apuchals > do not allow this!
 			throw new NotImplementedException();
 		}
-		
-	}
-	
-}
 
+	}
+
+}

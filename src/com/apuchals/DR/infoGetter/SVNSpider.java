@@ -13,27 +13,27 @@ import com.apuchals.DR.infoGetter.beans.LogEntry;
 import com.apuchals.DR.infoGetter.beans.Path;
 
 public class SVNSpider extends UseCase implements IVersioningSpider {
-	
+
 	public static final String CONFIGURATION_FILE = "svnConfiguration.properties";
-	
-	public static final String SVN_STATE ="svnState.properties";
-	
+
+	public static final String SVN_STATE = "svnState.properties";
+
 	private AbstractCommand svnlogCommand;
-	
+
 	private Keywords mKeywords;
 
 	public SVNSpider() {
 		svnlogCommand = new SVNLogCommand();
 	}
-	
+
 	// read svn log and get revisions later than in the properties
 	// for each revision do>
-		// get all files with the absolute paths 
-	// export to map of <revision, List<javaFiles>> 
-	
-	public Map<CommitInformation, CheckedFileList> getNewestRevisions () {
+	// get all files with the absolute paths
+	// export to map of <revision, List<javaFiles>>
+
+	public Map<CommitInformation, CheckedFileList> getNewestRevisions() {
 		computeKeywords();
-		return parseOutput (svnlogCommand.execute(mKeywords));
+		return parseOutput(svnlogCommand.execute(mKeywords));
 	}
 
 	private void computeKeywords() {
@@ -41,11 +41,12 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 		mKeywords.addKeywords(parser.parse(tr(SVN_STATE)));
 	}
 
-	private Map<CommitInformation, CheckedFileList> parseOutput(List<String> execute) {
+	private Map<CommitInformation, CheckedFileList> parseOutput(
+			List<String> execute) {
 		String oneString = toOneString(execute);
 		LogMessageTransformer messageTransformer = new LogMessageTransformer();
 		Log l = (Log) messageTransformer.getObject(oneString);
-		
+
 		Map<CommitInformation, CheckedFileList> result = new HashMap<CommitInformation, CheckedFileList>();
 		for (LogEntry le : l.getLogEntry()) {
 			result.put(new CommitInformation(le), getFileList(le));
@@ -71,9 +72,9 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 	private String toOneString(List<String> execute) {
 		StringBuilder sb = new StringBuilder();
 		for (String s : execute) {
-			sb.append(s+ "\n");
+			sb.append(s + "\n");
 		}
 		return sb.toString();
 	}
-	
+
 }

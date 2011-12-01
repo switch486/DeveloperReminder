@@ -5,15 +5,15 @@ import java.util.List;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(name="log")
+@Root(name = "log")
 public class Log {
-	@ElementList(name="logentry", inline=true)
+	@ElementList(name = "logentry", inline = true)
 	private List<LogEntry> logEntry;
 
 	public Log() {
-		super ();
+		super();
 	}
-	
+
 	public Log(List<LogEntry> logEntry) {
 		this.logEntry = logEntry;
 	}

@@ -4,24 +4,24 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Text;
 
-@Root(name="path")
+@Root(name = "path")
 public class Path {
 
-	@Attribute(name="kind")
+	@Attribute(name = "kind")
 	private String kind;
 
-	@Attribute(name="action")
+	@Attribute(name = "action")
 	private String action;
-	
-	@Attribute(name="copyfrom-path", required = false)
+
+	@Attribute(name = "copyfrom-path", required = false)
 	private String copyFromPath;
-	
-	@Attribute(name="copyfrom-rev", required = false)
+
+	@Attribute(name = "copyfrom-rev", required = false)
 	private String copyFromRev;
-	
+
 	@Text
 	private String value;
-	
+
 	public String getKind() {
 		return kind;
 	}
@@ -61,5 +61,5 @@ public class Path {
 	public void setCopyFromRev(String copyFromRev) {
 		this.copyFromRev = copyFromRev;
 	}
-	
+
 }

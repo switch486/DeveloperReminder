@@ -4,22 +4,22 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-@Root(name="logentry")
+@Root(name = "logentry")
 public class LogEntry {
 
-	@Attribute(name="revision")
+	@Attribute(name = "revision")
 	private int revision;
-	
-	@Element(name="author")
+
+	@Element(name = "author")
 	private String author;
-	
-	@Element(name="date")
+
+	@Element(name = "date")
 	private String date;
-	
-	@Element(name="paths")
+
+	@Element(name = "paths")
 	private Paths paths;
-	
-	@Element(name="msg")
+
+	@Element(name = "msg")
 	private String message;
 
 	public String getAuthor() {
@@ -61,7 +61,5 @@ public class LogEntry {
 	public int getRevision() {
 		return revision;
 	}
-	
-	
 
 }

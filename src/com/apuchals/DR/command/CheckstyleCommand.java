@@ -10,5 +10,4 @@ public class CheckstyleCommand extends AbstractCommand {
 		throw new NotImplementedException();
 	}
 
-
 }

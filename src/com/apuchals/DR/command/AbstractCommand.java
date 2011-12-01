@@ -10,10 +10,10 @@ import com.apuchals.DR.common.Keywords;
 import com.apuchals.DR.toRemove.NotImplementedException;
 
 public abstract class AbstractCommand {
-	
-	private String [] command = null;
 
-	public List<String> execute (Keywords keywords) {
+	private String[] command = null;
+
+	public List<String> execute(Keywords keywords) {
 		setComputeCommand(keywords);
 		return executeCommandAndGrabOutput(command);
 	}
@@ -23,9 +23,9 @@ public abstract class AbstractCommand {
 			command = buildCommand(keywords);
 		}
 	}
-	
-	public abstract String [] buildCommand (Keywords keywords);
-	
+
+	public abstract String[] buildCommand(Keywords keywords);
+
 	public List<String> executeCommandAndGrabOutput(String[] command) {
 		List<String> resultList = new ArrayList<String>();
 		Runtime run = Runtime.getRuntime();
@@ -36,11 +36,11 @@ public abstract class AbstractCommand {
 			// TODO 29.11.2011 apuchals > handle exceptions;
 			throw new NotImplementedException();
 		}
-//		try {
-//			pr.waitFor();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		// try {
+		// pr.waitFor();
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
 		BufferedReader buf = new BufferedReader(new InputStreamReader(
 				pr.getInputStream()));
 		String line = "";
@@ -54,5 +54,5 @@ public abstract class AbstractCommand {
 		}
 		return resultList;
 	}
-	
+
 }

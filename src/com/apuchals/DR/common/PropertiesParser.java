@@ -11,18 +11,18 @@ import java.util.Properties;
 import com.apuchals.DR.toRemove.NotImplementedException;
 
 public class PropertiesParser extends Parser {
-	
+
 	private Map<String, Properties> propertiesMap;
-	
+
 	public PropertiesParser() {
-		propertiesMap = new HashMap<String, Properties> ();
+		propertiesMap = new HashMap<String, Properties>();
 	}
 
 	@Override
 	public Keywords parse(URL propertiesFile) {
 		return new Keywords(getNewestProperties(propertiesFile));
 	}
-	
+
 	public Properties getNewestProperties(URL propertiesFile) {
 		Properties readProperties = propertiesMap.get(propertiesFile.getPath());
 		if (readProperties == null) {
@@ -31,11 +31,11 @@ public class PropertiesParser extends Parser {
 		}
 		return readProperties;
 	}
-	
-	public Properties readProperties (URL propertiesFile) {
+
+	public Properties readProperties(URL propertiesFile) {
 		Properties properties = new Properties();
 		try {
-		    properties.load(new FileInputStream(propertiesFile.getPath()));
+			properties.load(new FileInputStream(propertiesFile.getPath()));
 		} catch (IOException e) {
 			// TODO 29.11.2011 apuchals > handle exception
 			throw new NotImplementedException();
@@ -43,7 +43,7 @@ public class PropertiesParser extends Parser {
 		return properties;
 	}
 
-	public void updateProperties (String s, String value) {
+	public void updateProperties(String s, String value) {
 		Properties properties = propertiesMap.get(s);
 		properties.put(s, value);
 		try {
@@ -53,5 +53,5 @@ public class PropertiesParser extends Parser {
 			throw new NotImplementedException();
 		}
 	}
-	
+
 }

@@ -10,5 +10,4 @@ public class FindBugsCommand extends AbstractCommand {
 		throw new NotImplementedException();
 	}
 
-
 }

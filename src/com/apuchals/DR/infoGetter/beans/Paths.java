@@ -5,10 +5,10 @@ import java.util.List;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root(name="paths")
+@Root(name = "paths")
 public class Paths {
-	
-	@ElementList(name="path", inline=true)
+
+	@ElementList(name = "path", inline = true)
 	private List<Path> path;
 
 	public List<Path> getPath() {
