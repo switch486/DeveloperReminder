@@ -10,6 +10,7 @@ public class Keywords {
 	public static final String PATH_KEYWORD = "path";
 	public static final String EXEC_FILE = "execFile";
 	public static final String LAST_REVISION = "last.svn.revision";
+	public static final String SVN_FOLER_TO_REPLACE = "svnFolderToReplace";
 	
 	
 	private Hashtable<Object, Object> table;

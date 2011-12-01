@@ -26,6 +26,8 @@ public class LogMessageTransformer {
 			e.printStackTrace();
 			// TODO 29.11.2011 apuchals > handle exceptions;
 			throw new NotImplementedException();
+			// log the created XML and send to the author?
+			// drop it to the fileDB?
 		}
 		return result;
 	}
@@ -34,6 +36,7 @@ public class LogMessageTransformer {
 	// from xml to java
 	
 	public void getXml (Object ob) {
+		// TODO 01.12.2011 apuchals > remove this code
 		try {
 			serializer.write(ob, new File ("C:\\Users\\apuchals\\Downloads\\a.txt"));
 		} catch (Exception e) {

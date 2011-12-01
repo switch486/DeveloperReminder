@@ -13,6 +13,12 @@ public class Path {
 	@Attribute(name="action")
 	private String action;
 	
+	@Attribute(name="copyfrom-path", required = false)
+	private String copyFromPath;
+	
+	@Attribute(name="copyfrom-rev", required = false)
+	private String copyFromRev;
+	
 	@Text
 	private String value;
 	

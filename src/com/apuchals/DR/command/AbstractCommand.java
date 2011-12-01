@@ -46,7 +46,6 @@ public abstract class AbstractCommand {
 		String line = "";
 		try {
 			while ((line = buf.readLine()) != null) {
-				System.out.println(line);
 				resultList.add(line);
 			}
 		} catch (IOException e) {
