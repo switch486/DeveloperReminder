@@ -7,7 +7,7 @@ import java.net.URL;
 public class UseCase {
 	
 	protected static Parser parser;
-
+	
 	public void setParser(Parser parser) {
 		UseCase.parser = parser;
 	}

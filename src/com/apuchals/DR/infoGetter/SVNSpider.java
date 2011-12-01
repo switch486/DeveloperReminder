@@ -1,7 +1,6 @@
 package com.apuchals.DR.infoGetter;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,15 +29,24 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 	public Map<CommitInformation, List<File>> getNewestRevisions () {
 		Keywords keywordz = parser.parse(tr(CONFIGURATION_FILE));
 		keywordz.addKeywords(parser.parse(tr(SVN_STATE)));
-		svnlogCommand.execute(keywordz);
-		
-		return parseOutput (new ArrayList<String>() );
-		// TODO 29.11.2011 apuchals > retrieve data succesfull, parsing and asking again still needed....
+		return parseOutput (svnlogCommand.execute(keywordz));
 	}
 
 	private Map<CommitInformation, List<File>> parseOutput(List<String> execute) {
+		String oneString = toOneString(execute);
+		LogMessageTransformer messageTransformer = new LogMessageTransformer();
+		messageTransformer.getObject(oneString);
+		
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	private String toOneString(List<String> execute) {
+		StringBuilder sb = new StringBuilder();
+		for (String s : execute) {
+			sb.append(s+ "\n");
+		}
+		return sb.toString();
 	}
 	
 }
