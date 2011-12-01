@@ -1,5 +1,7 @@
 package com.apuchals.DR.infoGetter;
 
+import java.io.File;
+
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -30,5 +32,14 @@ public class LogMessageTransformer {
 	
 	
 	// from xml to java
+	
+	public void getXml (Object ob) {
+		try {
+			serializer.write(ob, new File ("C:\\Users\\apuchals\\Downloads\\a.txt"));
+		} catch (Exception e) {
+			// TODO 29.11.2011 apuchals > handle exceptions;
+			throw new NotImplementedException();
+		}
+	}
 
 }

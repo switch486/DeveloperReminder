@@ -8,6 +8,7 @@ import com.apuchals.DR.command.AbstractCommand;
 import com.apuchals.DR.command.SVNLogCommand;
 import com.apuchals.DR.common.Keywords;
 import com.apuchals.DR.common.UseCase;
+import com.apuchals.DR.infoGetter.beans.Log;
 
 public class SVNSpider extends UseCase implements IVersioningSpider {
 	
@@ -35,7 +36,29 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 	private Map<CommitInformation, List<File>> parseOutput(List<String> execute) {
 		String oneString = toOneString(execute);
 		LogMessageTransformer messageTransformer = new LogMessageTransformer();
-		messageTransformer.getObject(oneString);
+//		Log ob = new Log();
+//		List<LogEntry> le = new ArrayList<LogEntry>();
+//		LogEntry e = new LogEntry();
+//		e.setAuthor("asdf");
+//		e.setDate("w4t3rewf");
+//		e.setMessage("messa");
+//		e.setRevision(1234);
+//		Paths paths = new Paths();
+//		ArrayList<Path> arrayList = new ArrayList<Path>();
+//		Path e2 = new Path();
+//		e2.setAction("MM");
+//		e2.setKind("asdaff");
+//		e2.setValue("asfdfasdfasdfqawsfqwesdfasd");
+//		arrayList.add(e2);
+//		paths.setPath(arrayList);
+//		e.setPaths(paths);
+//		le.add(e);
+//		ob.setLogEntry(le);
+//		
+//		
+//		messageTransformer.getXml(ob);
+		Log l = (Log) messageTransformer.getObject(oneString);
+		l.toString();
 		
 		// TODO Auto-generated method stub
 		return null;

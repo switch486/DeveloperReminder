@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name="log")
 public class Log {
-	@ElementList(name="logentry")
+	@ElementList(name="logentry", inline=true)
 	private List<LogEntry> logEntry;
 
 	public Log() {

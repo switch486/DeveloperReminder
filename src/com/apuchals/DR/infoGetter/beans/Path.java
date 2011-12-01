@@ -13,6 +13,9 @@ public class Path {
 	@Attribute(name="action")
 	private String action;
 	
+	@Text
+	private String value;
+	
 	public String getKind() {
 		return kind;
 	}
@@ -36,8 +39,5 @@ public class Path {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
-	@Text
-	private String value;
 	
 }

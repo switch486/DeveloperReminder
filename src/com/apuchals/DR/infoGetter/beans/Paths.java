@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root;
 @Root(name="paths")
 public class Paths {
 	
-	@ElementList(name="path")
+	@ElementList(name="path", inline=true)
 	private List<Path> path;
 
 	public List<Path> getPath() {
