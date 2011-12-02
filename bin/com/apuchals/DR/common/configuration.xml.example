@@ -1,0 +1,12 @@
+<Configuration>
+	<commandConfig
+		class="com.apuchals.DR.common.XMLConfiguration.SVNLogCommandConfig"
+		repoFilePath="the filepath of Your local SVN repo" svnExecFilePath="Your local SVN exe instance"
+		svnFolderToReplace="this is a part of the SVN path Your files are located at which will be replaced with Your local svn repository" lastRevision="last revision" />
+	<commandConfig
+		class="com.apuchals.DR.common.XMLConfiguration.CheckstyleCommandConfig"
+		jarLocation="&quot; this is the location of the checkstyle JAR used &quot;"
+		additionalClassPathElements=";&quot; in case You have some special modules installed, this is the location You will want to append to the checkstyle classpath &quot;"
+		mainClassToRun=" the checkstyle MainClass path"
+		configurationFile="the xml configuration You want to use to perform a checkstyle analysis of the code You are using" />
+</Configuration>

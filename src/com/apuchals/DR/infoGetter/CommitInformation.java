@@ -1,6 +1,6 @@
 package com.apuchals.DR.infoGetter;
 
-import com.apuchals.DR.infoGetter.beans.LogEntry;
+import com.apuchals.DR.infoGetter.XMLBeans.LogEntry;
 
 public class CommitInformation {
 

@@ -6,39 +6,22 @@ import java.util.Map;
 
 import com.apuchals.DR.command.AbstractCommand;
 import com.apuchals.DR.command.SVNLogCommand;
-import com.apuchals.DR.common.Keywords;
 import com.apuchals.DR.common.UseCase;
-import com.apuchals.DR.infoGetter.beans.Log;
-import com.apuchals.DR.infoGetter.beans.LogEntry;
-import com.apuchals.DR.infoGetter.beans.Path;
+import com.apuchals.DR.common.XMLConfiguration.SVNLogCommandConfig;
+import com.apuchals.DR.infoGetter.XMLBeans.Log;
+import com.apuchals.DR.infoGetter.XMLBeans.LogEntry;
+import com.apuchals.DR.infoGetter.XMLBeans.Path;
 
 public class SVNSpider extends UseCase implements IVersioningSpider {
 
-	public static final String CONFIGURATION_FILE = "svnConfiguration.properties";
-
-	public static final String SVN_STATE = "svnState.properties";
-
 	private AbstractCommand svnlogCommand;
-
-	private Keywords mKeywords;
 
 	public SVNSpider() {
 		svnlogCommand = new SVNLogCommand();
 	}
 
-	// read svn log and get revisions later than in the properties
-	// for each revision do>
-	// get all files with the absolute paths
-	// export to map of <revision, List<javaFiles>>
-
 	public Map<CommitInformation, CheckedFileList> getNewestRevisions() {
-		computeKeywords();
-		return parseOutput(svnlogCommand.execute(mKeywords));
-	}
-
-	private void computeKeywords() {
-		mKeywords = parser.parse(tr(CONFIGURATION_FILE));
-		mKeywords.addKeywords(parser.parse(tr(SVN_STATE)));
+		return parseOutput(svnlogCommand.execute(getConfig()));
 	}
 
 	private Map<CommitInformation, CheckedFileList> parseOutput(
@@ -56,9 +39,8 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 
 	private CheckedFileList getFileList(LogEntry le) {
 		CheckedFileList resultList = new CheckedFileList();
-		String StringReplace = (String) mKeywords
-				.get(Keywords.SVN_FOLER_TO_REPLACE);
-		String exec = (String) mKeywords.get(Keywords.PATH_KEYWORD);
+		String StringReplace = getConfig().getSvnFolderToReplace();
+		String exec = getConfig().getSvnFolderToReplace();;
 		for (Path p : le.getPaths().getPath()) {
 			CheckedFile cf = new CheckedFile();
 			cf.setLocation(p.getValue().replace(StringReplace, exec));
@@ -67,6 +49,10 @@ public class SVNSpider extends UseCase implements IVersioningSpider {
 			resultList.add(cf);
 		}
 		return resultList;
+	}
+	
+	private SVNLogCommandConfig getConfig() {
+		return ((SVNLogCommandConfig) getCommandConfig(new SVNLogCommandConfig()));
 	}
 
 	private String toOneString(List<String> execute) {

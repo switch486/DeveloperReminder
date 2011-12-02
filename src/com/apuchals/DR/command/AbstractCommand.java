@@ -6,25 +6,25 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.apuchals.DR.common.Keywords;
+import com.apuchals.DR.common.XMLConfiguration.CommandConfig;
 import com.apuchals.DR.toRemove.NotImplementedException;
 
 public abstract class AbstractCommand {
 
 	private String[] command = null;
 
-	public List<String> execute(Keywords keywords) {
-		setComputeCommand(keywords);
+	public List<String> execute(CommandConfig commandConfig) {
+		setComputeCommand(commandConfig);
 		return executeCommandAndGrabOutput(command);
 	}
 
-	private void setComputeCommand(Keywords keywords) {
+	private void setComputeCommand(CommandConfig commandConfig) {
 		if (command == null) {
-			command = buildCommand(keywords);
+			command = buildCommand(commandConfig);
 		}
 	}
 
-	public abstract String[] buildCommand(Keywords keywords);
+	public abstract String[] buildCommand(CommandConfig keywords);
 
 	public List<String> executeCommandAndGrabOutput(String[] command) {
 		List<String> resultList = new ArrayList<String>();

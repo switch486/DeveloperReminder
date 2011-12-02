@@ -5,7 +5,7 @@ import java.io.File;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import com.apuchals.DR.infoGetter.beans.Log;
+import com.apuchals.DR.infoGetter.XMLBeans.Log;
 import com.apuchals.DR.toRemove.NotImplementedException;
 
 public class LogMessageTransformer {

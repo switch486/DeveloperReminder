@@ -1,3 +1,4 @@
 # Compiled source #
 ###################
 *.properties
+configuration.xml

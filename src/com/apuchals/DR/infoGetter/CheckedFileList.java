@@ -5,7 +5,7 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import com.apuchals.DR.toRemove.NotImplementedException;
+import com.apuchals.DR.common.exceptions.RemoveNotAllowedException;
 
 public class CheckedFileList {
 
@@ -26,7 +26,6 @@ public class CheckedFileList {
 			return innerList.iterator();
 		Iterator<CheckedFile> i = new HiddenIterator(extensions);
 		return i;
-		// TODO 01.12.2011 apuchals >
 	}
 
 	public boolean add(CheckedFile cf) {
@@ -116,8 +115,7 @@ public class CheckedFileList {
 
 		@Override
 		public void remove() {
-			// TODO 01.12.2011 apuchals > do not allow this!
-			throw new NotImplementedException();
+			throw new RemoveNotAllowedException();
 		}
 
 	}

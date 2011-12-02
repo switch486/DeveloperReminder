@@ -4,13 +4,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="com.apuchals.DR.common.IParser" class="com.apuchals.DR.common.PropertiesParser" />
 	<bean id="com.apuchals.DR.infoGetter.IVersioningSpider" class="com.apuchals.DR.infoGetter.SVNSpider" />
 	<bean id="com.apuchals.DR.review.IReview" class="com.apuchals.DR.review.ReviewStarter" />
 	<bean id="com.apuchals.DR.notify.INotification" class="com.apuchals.DR.notify.NotificationSender" />
-	<bean id="com.apuchals.DR.common.UseCase" class="com.apuchals.DR.common.UseCase">
-		<property name="parser" ref="com.apuchals.DR.common.IParser" />
-	</bean>
 	<bean id="com.apuchals.DR.DeveloperReminderStarter" class="com.apuchals.DR.DeveloperReminderStarter">
 		<property name="spider" ref="com.apuchals.DR.infoGetter.IVersioningSpider" />
 		<property name="reviewer" ref="com.apuchals.DR.review.IReview" />

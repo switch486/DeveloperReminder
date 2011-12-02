@@ -1,24 +1,22 @@
 package com.apuchals.DR.command;
 
-import com.apuchals.DR.common.Keywords;
+import com.apuchals.DR.common.XMLConfiguration.CommandConfig;
+import com.apuchals.DR.common.XMLConfiguration.SVNLogCommandConfig;
 
 public class SVNLogCommand extends AbstractCommand {
 
 	@Override
-	public String[] buildCommand(Keywords keywords) {
-		String path = (String) keywords.get(Keywords.PATH_KEYWORD);
-		String exec = (String) keywords.get(Keywords.EXEC_FILE);
-		String revisions = (String) keywords.get(Keywords.LAST_REVISION);
+	public String[] buildCommand(CommandConfig c) {
+		SVNLogCommandConfig config = getConfig(c);
+		String path = config.getRepoFilePath();
+		String exec = config.getSvnExecFilePath();
+		int revisions = config.getLastRevision();
 		return new String[] { exec, "log", "-v", "--xml", path, "-r",
 				revisions + ":HEAD" };
 	}
-
-	// @Override
-	// public String[] buildCommand(Keywords keywords) {
-	// String path = (String) keywords.get(Keywords.PATH_KEYWORD);
-	// String exec = (String) keywords.get(Keywords.EXEC_FILE);
-	// String revisions = (String) keywords.get(Keywords.LAST_REVISION);
-	// return new String[] { exec, "log", path, "-r", revisions+":HEAD" };
-	// }
+	
+	private SVNLogCommandConfig getConfig(CommandConfig config) {
+		return ((SVNLogCommandConfig) config);
+	}
 
 }
