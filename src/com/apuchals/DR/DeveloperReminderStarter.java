@@ -30,6 +30,7 @@ public class DeveloperReminderStarter {
 
 	public void start() {
 		// TODO 26.11.2011 apuchals > adapt the loggers!
+		// TODO 02.12.2011 apuchals > critical - apply parser traverser!
 
 		// start the SVNSpider
 		// start the Review Starter in a loop with the NotificaitonSender
@@ -37,7 +38,7 @@ public class DeveloperReminderStarter {
 
 		Map<CommitInformation, CheckedFileList> newestRevisions = spider
 				.getNewestRevisions();
-
+		
 		for (Map.Entry<CommitInformation, CheckedFileList> entry : newestRevisions
 				.entrySet()) {
 			String review = reviewer.computeReview(entry.getValue());
